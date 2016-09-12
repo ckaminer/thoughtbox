@@ -1,2 +1,37 @@
 Welcome, <%= current_user.email %>
 <%= link_to "Logout", logout_path, method: :delete %>
+
+<%= form_for(@new_link) do |f| %>
+  <h4><%= f.label :url %>
+  <span class="form-field-email"><%= f.text_field :url, class: "form-control" %></span></h4>
+  <h4><%= f.label :title %>
+  <span class="form-field-password"><%= f.text_field :title, class: "form-control" %></span></h4>
+  <%= f.submit "Create Link"%>
+  <br><br><br>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Title</th>
+      <th>Read</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link.url %></td>
+        <td><%= link.title %></td>
+        <td>
+          <% if link.read %>
+            Read
+          <% else %>
+            Unread
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
