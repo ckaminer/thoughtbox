@@ -37,6 +37,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'teaspoon'
   gem 'teaspoon-mocha'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :test do
