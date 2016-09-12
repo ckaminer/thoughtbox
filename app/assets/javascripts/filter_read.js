@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  var $links = $('.link');
 
   $('#link_filter_status').on('change', function () {
+    var $links = $('.link');
     var currentSelection = this.value;
     $links.each(function(index, link) {
       $link = $(link);

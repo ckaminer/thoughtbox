@@ -2,7 +2,6 @@ require 'uri'
 class LinksController < ApplicationController
   def index
     if current_user
-      @links = Link.where(user: current_user)
       @new_link = Link.new
     else
       render file: "public/404"
