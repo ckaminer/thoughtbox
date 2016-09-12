@@ -12,7 +12,7 @@ RSpec.feature "User creates link" do
 
       expect(page).to have_content "http://facebook.com"
       expect(page).to have_content "facebook"
-      expect(page).to have_content "Unread"
+      expect(page).to have_content "Mark as Read"
     end
   end
 
