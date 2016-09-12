@@ -27,9 +27,17 @@ class LinksController < ApplicationController
       link.read = !link.read
       link.save
       redirect_to links_path
+    elsif valid_url?(link_params[:url])
+      link.update(link_params)
+      redirect_to links_path
     else
-      link.update(params)
+      flash[:error] = "Invalid URL"
+      redirect_to edit_link_path(link)
     end
+  end
+
+  def edit
+    @link = Link.find(params[:id])
   end
 
   private
