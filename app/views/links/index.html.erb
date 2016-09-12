@@ -21,17 +21,23 @@ Welcome, <%= current_user.email %>
 
   <tbody>
     <% @links.each do |link| %>
-      <tr>
+    <% if link.read %>
+      <tr data-id="<%= link.id %>" id="link-<%= link.id %>" class="read">
         <td><%= link.url %></td>
         <td><%= link.title %></td>
         <td>
-          <% if link.read %>
-            Read
-          <% else %>
-            Unread
-          <% end %>
+          <%= link_to "Mark as Unread", link_path(link, read: false), method: :patch %>
         </td>
       </tr>
+    <% else %>
+      <tr data-id="<%= link.id %>" id="link-<%= link.id %>" class="unread">
+        <td><%= link.url %></td>
+        <td><%= link.title %></td>
+        <td>
+          <%= link_to "Mark as Read", link_path(link, read: true), method: :patch %>
+        </td>
+      </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
