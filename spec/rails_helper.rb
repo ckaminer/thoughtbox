@@ -14,6 +14,12 @@ def login(user)
   click_button "Login"
 end
 
+def create_link
+  fill_in "Url", with: "http://facebook.com"
+  fill_in "Title", with: "facebook"
+  click_on "Create Link"
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
