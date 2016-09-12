@@ -20,7 +20,7 @@ $( document ).ready(function() {
     if (direction === "descending") {
       displayInOrder(sorted);
     } else {
-      displayInOrder(sorted.reverse())
+      displayInOrder(sorted.reverse());
     }
   }
 

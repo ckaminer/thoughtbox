@@ -9,8 +9,6 @@ class Api::V1::LinksController < ApplicationController
       link.read = !link.read
       link.save
       render json: link
-    else
-      link.update(params)
     end
   end
 end
