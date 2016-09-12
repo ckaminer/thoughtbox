@@ -35,8 +35,5 @@ $( document ).ready(function() {
         prependIdea(link);
       });
     },
-    error: function(){
-      alert("Links unable to load, please refresh to try again");
-    }
   });
 });
