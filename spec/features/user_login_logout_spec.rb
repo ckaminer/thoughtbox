@@ -9,7 +9,7 @@ RSpec.feature "User Logs In and Logs Out" do
       fill_in "Password", with: "password"
       click_button "Login"
 
-      expect(current_path).to eq root_path
+      expect(current_path).to eq links_path
       expect(page).to have_content user.email
     end
 
