@@ -2,7 +2,6 @@ require 'uri'
 class LinksController < ApplicationController
   def index
     if current_user
-      @links = Link.where(user: current_user)
       @new_link = Link.new
     else
       render file: "public/404"
@@ -14,20 +13,15 @@ class LinksController < ApplicationController
     link.user = current_user
     if valid_url?(link.url)
       link.save
-      redirect_to links_path
     else
       flash[:error] = "Invalid URL"
-      redirect_to links_path
     end
+    redirect_to links_path
   end
 
   def update
     link = Link.find(params[:id])
-    if params[:read]
-      link.read = !link.read
-      link.save
-      redirect_to links_path
-    elsif valid_url?(link_params[:url])
+    if valid_url?(link_params[:url])
       link.update(link_params)
       redirect_to links_path
     else

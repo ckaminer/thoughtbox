@@ -10,38 +10,24 @@ Welcome, <%= current_user.email %>
   <br><br><br>
 <% end %>
 
+<div class="col-sm-4 col-sm-offset-2">
+  <h5>Search:</h5>
+  <input type="text" class="form-control" id="search-bar">
+</div>
+<div class="col-sm-2 col-sm-offset-2">
+  Filer by Status: <%= select("link", "filter_status", ["All", "Read", "Unread"], selected: "All") %>
+</div>
+
 <table class="table table-hover">
   <thead>
     <tr>
       <th>Url</th>
-      <th>Title</th>
+      <th id="title-header"><%= link_to "Title" %></th>
       <th>Read</th>
       <th>Edit</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @links.each do |link| %>
-    <% if link.read %>
-      <tr data-id="<%= link.id %>" id="link-<%= link.id %>" class="read">
-        <td><%= link.url %></td>
-        <td><%= link.title %></td>
-        <td>
-          <%= link_to "Mark as Unread", link_path(link, read: false), method: :patch %>
-        </td>
-        <td><%= link_to "Edit", edit_link_path(link) %></td>
-      </tr>
-    <% else %>
-      <tr data-id="<%= link.id %>" id="link-<%= link.id %>" class="unread">
-        <td><%= link.url %></td>
-        <td><%= link.title %></td>
-        <td>
-          <%= link_to "Mark as Read", link_path(link, read: true), method: :patch %>
-        </td>
-        <td><%= link_to "Edit", edit_link_path(link) %></td>
-      </tr>
-    <% end %>
-
-    <% end %>
+  <tbody id="table-body">
   </tbody>
 </table>
