@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'bootstrap-sass'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -36,6 +37,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'teaspoon'
   gem 'teaspoon-mocha'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :test do
