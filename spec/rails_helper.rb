@@ -6,6 +6,14 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+
+def login(user)
+  visit "/login"
+  fill_in "e-mail", with: user.email
+  fill_in "Password", with: "password"
+  click_button "Login"
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

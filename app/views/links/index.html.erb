@@ -24,7 +24,13 @@ Welcome, <%= current_user.email %>
       <tr>
         <td><%= link.url %></td>
         <td><%= link.title %></td>
-        <td><%= link.read %></td>
+        <td>
+          <% if link.read %>
+            Read
+          <% else %>
+            Unread
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
