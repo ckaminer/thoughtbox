@@ -11,4 +11,7 @@
   <body>
     <%= yield %>
   </body>
+  <% flash.each do |name, message| %>
+    <%= content_tag :div, raw(message) %>
+  <% end %>
 </html>

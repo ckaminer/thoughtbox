@@ -1,0 +1,10 @@
+<div class="col-md-4 col-sm-12">
+  <h2>Login</h2>
+  <%= form_for(:session, url: login_path) do |f| %>
+  <span><%= f.label :email, "e-mail" %></span>
+  <%= f.text_field :email %><br>
+  <span><%= f.label :password %></span>
+  <%= f.password_field :password %><br>
+  <%= f.submit "Login", :class => "btn btn-custom"%>
+  <% end %>
+</div>
