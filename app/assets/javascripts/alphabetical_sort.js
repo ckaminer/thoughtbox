@@ -1,7 +1,7 @@
 var descendingLinks = false;
 
 function toggleDescending(){
-  if (descendingLinks === false){
+  if (!descendingLinks){
     descendingLinks = true;
     return "descending";
   }

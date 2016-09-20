@@ -11,6 +11,8 @@ $( document ).ready(function() {
         var row = $("#link-" + link.id);
         var button = $("#link-" + link.id + " #toggle-status-button");
         row.toggleClass("Read");
+        row.toggleClass("Unread");
+        row.attr('data-status', statusLookup(link));
         button.text(buttonText(link));
       },
       error: function(){
@@ -18,11 +20,4 @@ $( document ).ready(function() {
       }
     });
   });
-  function buttonText(link) {
-    if (link.read === true) {
-      return "Mark as Unread";
-    } else {
-      return "Mark as Read";
-    }
-  }
 });

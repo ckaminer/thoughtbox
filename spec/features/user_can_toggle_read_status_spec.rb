@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "User toggles link read status" do
+RSpec.feature "User toggles link read status", js: true do
   context "valid url" do
     scenario "link is added to links list on index page" do
       user = create(:user)
@@ -9,12 +9,12 @@ RSpec.feature "User toggles link read status" do
       fill_in "Url", with: "http://facebook.com"
       fill_in "Title", with: "facebook"
       click_on "Create Link"
-      expect(page).to have_css '.unread'
+      expect(page).to have_css '.Unread'
 
       click_on "Mark as Read"
 
       expect(page).to have_content "Mark as Unread"
-      expect(page).to have_css '.read'
+      expect(page).to have_css '.Read'
     end
   end
 end

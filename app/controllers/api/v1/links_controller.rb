@@ -5,7 +5,7 @@ class Api::V1::LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
-    if params["read"]
+    if params[:read]
       link.read = !link.read
       link.save
       render json: link

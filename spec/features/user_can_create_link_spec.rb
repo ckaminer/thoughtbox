@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "User creates link" do
+RSpec.feature "User creates link", js: true do
   context "valid url" do
     scenario "link is added to links list on index page" do
       user = create(:user)

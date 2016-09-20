@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "User edits link" do
+RSpec.feature "User edits link", js: true do
   context "valid url" do
     scenario "updated url shows on page" do
       user = create(:user)
@@ -25,7 +25,7 @@ RSpec.feature "User edits link" do
 
       fill_in "Url", with: "invalidurl"
       click_on "Update Link"
-      
+
       expect(page).to have_content "Invalid URL"
       expect(page).to_not have_content "invalidurl"
     end
