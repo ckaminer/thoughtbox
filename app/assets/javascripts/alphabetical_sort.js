@@ -31,7 +31,7 @@ $( document ).ready(function() {
     });
   }
 
-  $("html").on('click', '#title-header', function(event){
+  $("#title-header").on('click', function(event){
     event.preventDefault();
     $("#table-body").val("");
     var order = toggleDescending();
