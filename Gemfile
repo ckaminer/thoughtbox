@@ -41,6 +41,8 @@ group :development, :test do
   gem 'teaspoon-mocha'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'teaspoon'
+  gem 'teaspoon-mocha'
 end
 
 group :test do
