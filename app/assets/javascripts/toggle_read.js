@@ -8,21 +8,20 @@ $( document ).ready(function() {
       data: { id: id, read: "toggle" },
       dataType: "JSON",
       success: function(link){
-        var row = $("#link-" + link.id);
-        var button = $("#link-" + link.id + " #toggle-status-button");
-        row.toggleClass("Read");
-        button.text(buttonText(link));
+        executeUpate(link);
       },
       error: function(){
         alert("Links unable to load, please refresh to try again");
       }
     });
   });
-  function buttonText(link) {
-    if (link.read === true) {
-      return "Mark as Unread";
-    } else {
-      return "Mark as Read";
-    }
+
+  function executeUpate(link) {
+    var row = $("#link-" + link.id);
+    var button = $("#link-" + link.id + " #toggle-status-button");
+    row.toggleClass("Read");
+    row.toggleClass("Unread");
+    row.attr('data-status', statusLookup(link));
+    button.text(buttonText(link));
   }
 });

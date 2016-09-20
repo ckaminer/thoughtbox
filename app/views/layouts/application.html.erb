@@ -8,10 +8,10 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <body class="container">
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, raw(message), class: "alert", id: "flash_#{name}" %>
+    <% end %>
     <%= yield %>
   </body>
-  <% flash.each do |name, message| %>
-    <%= content_tag :div, raw(message) %>
-  <% end %>
 </html>

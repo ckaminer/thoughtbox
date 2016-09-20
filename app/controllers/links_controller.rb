@@ -11,7 +11,7 @@ class LinksController < ApplicationController
   def create
     link = Link.new(link_params)
     link.user = current_user
-    if valid_url?(link.url)
+    if link.valid_url?
       link.save
     else
       flash[:error] = "Invalid URL"
@@ -21,7 +21,7 @@ class LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
-    if valid_url?(link_params[:url])
+    if link.valid_url?(params[:link][:url])
       link.update(link_params)
       redirect_to links_path
     else
@@ -34,15 +34,15 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
   end
 
-  private
-    def link_params
-      params.require(:link).permit(:url, :title, :user, :read)
-    end
-
-    def valid_url?(url)
-      uri = URI.parse(url)
-      uri.kind_of?(URI::HTTP)
-    rescue URI::InvalidURIError
-      false
-    end
+private
+  def link_params
+    params.require(:link).permit(:url, :title, :user, :read)
+  end
+  #
+  # def valid_url?(url)
+  #   uri = URI.parse(url)
+  #   uri.kind_of?(URI::HTTP)
+  # rescue URI::InvalidURIError
+  #   false
+  # end
 end

@@ -2,6 +2,10 @@
   background-color: gray;
 }
 
-.Unread {
-  background-color: white;
+#flash_error {
+  background-color: red;
+}
+
+#flash_notice {
+  background-color: green;
 }
