@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-
   $("#search-bar").on("keyup", function (){
     var currentSearch = this.value.toLowerCase();
     $('.link').each(function (_index, link) {
@@ -12,5 +11,4 @@ $( document ).ready(function() {
       }
     });
   });
-
 });
