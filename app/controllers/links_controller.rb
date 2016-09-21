@@ -32,17 +32,15 @@ class LinksController < ApplicationController
 
   def edit
     @link = Link.find(params[:id])
+    if @link.user == current_user
+      @link
+    else
+      render file: "public/404"
+    end
   end
 
 private
   def link_params
     params.require(:link).permit(:url, :title, :user, :read)
   end
-  #
-  # def valid_url?(url)
-  #   uri = URI.parse(url)
-  #   uri.kind_of?(URI::HTTP)
-  # rescue URI::InvalidURIError
-  #   false
-  # end
 end

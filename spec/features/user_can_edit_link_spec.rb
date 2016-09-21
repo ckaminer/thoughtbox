@@ -30,4 +30,26 @@ RSpec.feature "User edits link", js: true do
       expect(page).to_not have_content "invalidurl"
     end
   end
+
+  context "Not able to edit" do
+    scenario "guest" do
+      user = create(:user)
+      link = create(:link, user: user)
+
+      visit "/links/#{link.id}/edit"
+
+      expect(page).to have_content "The page you were looking for doesn't exist."
+    end
+
+    scenario "guest" do
+      user = create(:user)
+      link = create(:link, user: user)
+      other_user = create(:user)
+      login(other_user)
+
+      visit "/links/#{link.id}/edit"
+
+      expect(page).to have_content "The page you were looking for doesn't exist."
+    end
+  end
 end
